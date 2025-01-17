@@ -42,7 +42,7 @@ final class ShowTaskComponent extends Component
         if ($taskCount > 0) {
             $latestTask = $this->project->task()->latest()->first();
             if ($latestTask->end_time === null) {
-                app(UpdateTaskTimes::class)->handle($latestTask, $latestTask->start_time, Carbon::now()->format('Y-m-d H:i:s'));
+                app(UpdateTaskTimes::class)->handle($latestTask, (string) $latestTask->start_time, Carbon::now()->format('Y-m-d H:i:s'));
                 $this->taskId = $latestTask->id;
                 if ($latestTask->memo !== null) {
                     $this->memo = $latestTask->memo;
@@ -54,7 +54,7 @@ final class ShowTaskComponent extends Component
     public function setEndTime(): void
     {
         $task = $this->project->task()->find($this->taskId);
-        app(UpdateTaskTimes::class)->handle($task, $task->start_time, Carbon::now()->format('Y-m-d H:i:s'));
+        app(UpdateTaskTimes::class)->handle($task, (string) $task->start_time, Carbon::now()->format('Y-m-d H:i:s'));
     }
 
     public function render(): View

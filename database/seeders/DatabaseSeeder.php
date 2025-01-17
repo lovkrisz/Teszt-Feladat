@@ -22,6 +22,6 @@ final class DatabaseSeeder extends Seeder
             'name' => 'Test User',
             'email' => 'test@example.com',
         ]);
-        Project::factory(10)->create();
+        // Project::factory(10)->create();
     }
 }
