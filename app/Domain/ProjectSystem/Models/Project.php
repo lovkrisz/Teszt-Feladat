@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Domain\ProjectSystem\Models;
 
 use App\Models\User;
@@ -9,14 +11,14 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Project extends Model
+final class Project extends Model
 {
-	use HasFactory, SoftDeletes;
+    use HasFactory, SoftDeletes;
 
-	protected $fillable = [
-		'name',
-		'user_id',
-	];
+    protected $fillable = [
+        'name',
+        'user_id',
+    ];
 
     public function user(): BelongsTo
     {
@@ -25,6 +27,6 @@ class Project extends Model
 
     public function task(): HasMany
     {
-        return $this->hasMany(Task::class, 'id', 'project_id');
+        return $this->hasMany(Task::class, 'project_id', 'id');
     }
 }

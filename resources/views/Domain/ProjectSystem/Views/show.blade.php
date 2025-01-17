@@ -8,9 +8,10 @@
     <title>Teszt Feladat</title>
 
     @vite('resources/css/app.css')
+    @livewireScripts
 </head>
 <body class="flex items-center justify-center h-screen">
-<livewire:show-task-component :project="$project" />
+<livewire:domain.project-system.show-task-component :project="$project"/>
 
 </body>
 </html>
