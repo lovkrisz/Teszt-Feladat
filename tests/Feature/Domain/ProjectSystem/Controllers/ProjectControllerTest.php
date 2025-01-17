@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace Tests\Feature\Domain\ProjectSystem\Controllers;
 
 use App\Domain\ProjectSystem\Models\Project;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
+uses(RefreshDatabase::class);
 it('shows a project', function () {
     $project = Project::create([
         'name' => 'Project 1',

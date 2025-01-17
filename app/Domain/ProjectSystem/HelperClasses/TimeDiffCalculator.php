@@ -14,7 +14,7 @@ final class TimeDiffCalculator
     {
         $start = Carbon::parse($start);
         $end = Carbon::parse($end);
-        $this->result = $start->diffInSeconds($end);
+        $this->result = (int)$start->diffInSeconds($end);
 
         return $this;
     }

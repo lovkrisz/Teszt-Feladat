@@ -2,7 +2,9 @@
 
 use App\Domain\ProjectSystem\Models\Project;
 use App\Models\User;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
+uses(RefreshDatabase::class);
 it('it loads the export page', function () {
     User::factory()->create();
     Project::create([

@@ -3,6 +3,9 @@
 use App\Domain\ProjectSystem\Actions\CreateTaskAction;
 use App\Domain\ProjectSystem\Models\Project;
 use App\Models\User;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+
+uses(RefreshDatabase::class);
 
 it('it creates a task', function () {
 

@@ -10,6 +10,9 @@ final class UpdateMemoAction
 {
     public function handle(Project $project, string $memo, int $taskId): void
     {
+        if (!$project->task()->find($taskId)) {
+            return;
+        }
         $project->task()->find($taskId)->update(['memo' => $memo]);
     }
 }
