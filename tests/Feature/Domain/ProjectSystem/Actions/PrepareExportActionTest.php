@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 // tests/Feature/Domain/ProjectSystem/Actions/PrepareExportActionTest.php
 
 use App\Domain\ProjectSystem\Actions\PrepareExportAction;
@@ -21,12 +23,10 @@ it('handles export preparation correctly', function () {
     $action = new PrepareExportAction();
     $result = $action->handle($user->id);
 
-
     expect($result)->toBeInstanceOf(ExportResultDTO::class)
         ->and($result->projects)->toHaveCount(2)
         ->and($result->tasks)->toHaveCount(2)
         ->and($result->totalTimes)->toHaveCount(2);
-
 
     foreach ($result->totalTimes as $total_time) {
         expect($total_time)->toBe(14400); // 4 hours in seconds

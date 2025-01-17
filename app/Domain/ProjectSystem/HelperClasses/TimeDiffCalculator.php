@@ -10,16 +10,16 @@ final class TimeDiffCalculator
 {
     private mixed $result;
 
-    public function calculate($start, $end): TimeDiffCalculator
+    public function calculate($start, $end): self
     {
         $start = Carbon::parse($start);
         $end = Carbon::parse($end);
-        $this->result = (int)$start->diffInSeconds($end);
+        $this->result = (int) $start->diffInSeconds($end);
 
         return $this;
     }
 
-    public function formatSeconds(int $seconds = -1): TimeDiffCalculator
+    public function formatSeconds(int $seconds = -1): self
     {
         if ($seconds === -1) {
             $seconds = $this->result;

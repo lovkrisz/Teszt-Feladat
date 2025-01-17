@@ -13,7 +13,8 @@ final class CreateTaskAction
     {
         /**
          * Create a new task for the project
-         * @param Project $project
+         *
+         * @param  Project  $project
          * @return int
          */
         return $project->task()->create([

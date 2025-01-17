@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 // tests/Unit/Domain/ProjectSystem/Models/TaskTest.php
 
 use App\Domain\ProjectSystem\Models\Project;

@@ -13,7 +13,7 @@ final class PrepareExportAction
     public function handle(int $userid): ExportResultDTO
     {
         $user = User::find($userid);
-        if (!$user) {
+        if (! $user) {
             return new ExportResultDTO([], [], []);
         }
         $projects = $user->projects;

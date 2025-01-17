@@ -1,9 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 // tests/Unit/Domain/ProjectSystem/HelperClasses/TimeDiffCalculatorTest.php
 
 use App\Domain\ProjectSystem\HelperClasses\TimeDiffCalculator;
-use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 uses(RefreshDatabase::class);

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 // tests/Feature/Domain/ProjectSystem/Actions/UpdateTaskTimesTest.php
 
 use App\Domain\ProjectSystem\Actions\UpdateTaskTimes;

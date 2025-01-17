@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 // tests/Feature/Domain/ProjectSystem/Actions/UpdateMemoActionTest.php
 
 use App\Domain\ProjectSystem\Actions\UpdateMemoAction;
@@ -11,7 +13,7 @@ uses(RefreshDatabase::class);
 it('updates the memo of a task', function () {
     $project = Project::factory()->create();
     $task = Task::create([
-        'project_id' => $project->id
+        'project_id' => $project->id,
     ]);
 
     $action = new UpdateMemoAction();

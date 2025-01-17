@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use App\Domain\ProjectSystem\Actions\CreateTaskAction;
 use App\Domain\ProjectSystem\Models\Project;
 use App\Models\User;
