@@ -48,7 +48,7 @@ final class ProjectController extends Controller
         if ($latestTask) {
             $data['taskId'] = $latestTask->id;
             $data['memo'] = $latestTask->memo;
-            app(UpdateTaskTimes::class)->handle($latestTask, (string)$latestTask->start_time, Carbon::now()->format('Y-m-d H:i:s'));
+            app(UpdateTaskTimes::class)->handle($latestTask, (string) $latestTask->start_time, Carbon::now()->format('Y-m-d H:i:s'));
 
         }
 

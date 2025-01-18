@@ -14,11 +14,9 @@ it('shows a project', function () {
         'user_id' => 1,
     ]);
 
-
     $response = $this->get("/project/{$project->id}");
     $response->assertStatus(200);
     $response->assertViewIs('Domain.ProjectSystem.Views.show');
-
 
 });
 it('can create a project', function () {
@@ -45,6 +43,5 @@ it('can change the latest task end time when reloading page', function () {
     $response = $this->get("/project/{$project->id}");
     $response->assertStatus(200);
     expect($project->task()->where('id', $task->id)->first()->end_time)->not->toBeNull();
-
 
 });
