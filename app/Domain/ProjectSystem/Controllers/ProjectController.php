@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace App\Domain\ProjectSystem\Controllers;
 
+use App\Domain\ProjectSystem\Actions\UpdateTaskTimes;
 use App\Domain\ProjectSystem\Models\Project;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -39,7 +41,17 @@ final class ProjectController extends Controller
         ]);
 
         $project = Project::find($request->id);
+        $latestTask = $project->task()->where('end_time', null)->first();
+        $data = [
+            'project' => $project,
+        ];
+        if ($latestTask) {
+            $data['taskId'] = $latestTask->id;
+            $data['memo'] = $latestTask->memo;
+            app(UpdateTaskTimes::class)->handle($latestTask, (string)$latestTask->start_time, Carbon::now()->format('Y-m-d H:i:s'));
 
-        return view('Domain.ProjectSystem.Views.show', ['project' => $project]);
+        }
+
+        return view('Domain.ProjectSystem.Views.show', ['data' => $data]);
     }
 }
