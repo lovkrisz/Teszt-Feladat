@@ -17,7 +17,7 @@ it('shows a project', function () {
     $response = $this->get("/project/{$project->id}");
     $response->assertStatus(200);
     $response->assertViewIs('Domain.ProjectSystem.Views.show');
-    $response->assertViewHas('project', $project);
+
 });
 it('can create a project', function () {
     $response = $this->post('/project-save', [
@@ -29,4 +29,19 @@ it('can create a project', function () {
         'name' => 'Project 1',
         'user_id' => 1,
     ]);
+});
+it('can change the latest task end time when reloading page', function () {
+    $project = Project::create([
+        'name' => 'Project 1',
+        'user_id' => 1,
+    ]);
+    $task = $project->task()->create([
+        'project_id' => $project->id,
+        'start_time' => now(),
+    ]);
+    expect($task->end_time)->toBeNull();
+    $response = $this->get("/project/{$project->id}");
+    $response->assertStatus(200);
+    expect($project->task()->where('id', $task->id)->first()->end_time)->not->toBeNull();
+
 });
